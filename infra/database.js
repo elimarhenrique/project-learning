@@ -17,22 +17,21 @@ async function query(queryObject) {
 
 export default {
   query,
-  getNewClient
+  getNewClient,
 };
 
-
 async function getNewClient() {
-    const client = new Client({
-      host: process.env.POSTGRES_HOST,
-      port: process.env.POSTGRES_PORT,
-      user: process.env.POSTGRES_USER,
-      database: process.env.POSTGRES_DB,
-      password: process.env.POSTGRES_PASSWORD,
-      ssl: getSSLValues(),
-    });
+  const client = new Client({
+    host: process.env.POSTGRES_HOST,
+    port: process.env.POSTGRES_PORT,
+    user: process.env.POSTGRES_USER,
+    database: process.env.POSTGRES_DB,
+    password: process.env.POSTGRES_PASSWORD,
+    ssl: getSSLValues(),
+  });
 
-    await client.connect();
-    return client;
+  await client.connect();
+  return client;
 }
 
 function getSSLValues() {
@@ -41,7 +40,6 @@ function getSSLValues() {
       ca: process.env.POSTGRES_CA,
     };
   }
-  
-  return process.env.NODE_ENV === "production" ? true : false;
 
+  return process.env.NODE_ENV === "production" ? true : false;
 }
