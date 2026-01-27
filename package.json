@@ -2,7 +2,6 @@
   "name": "project-learning",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "npm run services:up && npm run wait-for-postgres && npm run migrations:up && next dev",
